@@ -82,7 +82,10 @@ ul li {
 img {
 	vertical-align: top;
 }
-
-.app {
-	height: 100vh;
+body {
+	overscroll-behavior: contain;
+}
+.app, #root {
+	overflow: hidden;
+	height: 100%;
 }

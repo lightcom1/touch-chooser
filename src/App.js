@@ -14,7 +14,6 @@ function App() {
 	};
 	const hanldeTouchMove = e => {
 		setTouches([...e.touches]);
-
 	};
 
 	return (
