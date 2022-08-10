@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Circle from './components/Circle.jsx';
+import Circle from './components/Circle';
 
 function App() {
 	const [touches, setTouches] = useState([]);
