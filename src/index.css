@@ -39,6 +39,6 @@ body {
 body {
 	overflow: hidden;
 	overscroll-behavior: contain;
-	background: center / cover no-repeat url(./assets/blurry-gradient.svg);
+	background: #000;
 	color: #fff;
 }
