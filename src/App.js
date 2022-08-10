@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import Circle from './components/Circle';
+import './app.scss';
 
 function App() {
 	const [touches, setTouches] = useState([]);
 
-
 	const hanldeTouchStart = e => {
-		console.log('e.touches: ', e.touches);
 		setTouches([...e.touches]);
 	};
 	const hanldeTouchEnd = e => {
@@ -22,10 +21,9 @@ function App() {
 			onTouchStart={hanldeTouchStart}
 			onTouchEnd={hanldeTouchEnd}
 			onTouchMove={hanldeTouchMove}>
-			<h1>Hello v - 1</h1>
-			{touches.length > 0 && touches.map(touch => (
-				<Circle touch={touch} key={touch.identifier}/>
-			))}
+			<h1 className={`title${touches.length > 0 ? ' fade-out' : ''}`}>Touch the screen</h1>
+			{touches.length > 0 &&
+				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
 		</div>
 	);
 }

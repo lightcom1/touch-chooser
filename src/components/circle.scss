@@ -1,8 +1,17 @@
 .circle {
 	position: absolute;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(0.6);
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
-	background-color: #000;
+	background-color: #fff;
+	animation: popup .2s ease forwards;
+	outline: 3px solid #fff;
+	outline-offset: 10px;
+}
+
+@keyframes popup {
+	to {
+		transform: translate(-50%, -50%) scale(1);
+	}
 }
