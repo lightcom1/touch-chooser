@@ -4,7 +4,6 @@ import './app.scss';
 
 function App() {
 	const [touches, setTouches] = useState([]);
-	const [winner, setWinner] = useState(false);
 
 	const handleTouch = e => {
 		setTouches([...e.touches]);
@@ -53,7 +52,7 @@ function App() {
 
 	return (
 		<div className='app'>
-			<h1 className={`title${touches.length > 0 || winner ? ' fade-out' : ''}`}>
+			<h1 className={`title${touches.length > 0 ? ' fade-out' : ''}`}>
 				Touch the screen
 			</h1>
 			{touches.length > 0 &&
