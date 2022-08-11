@@ -4,8 +4,8 @@ const Circle = ({ touch }) => {
 
 	return (
 		<div
-			className='circle'
-			style={{ left: touch?.clientX, top: touch?.clientY }}>{touch?.identifier}</div>
+			className={`circle${touch?.clientX ? '' : ' hide'}`}
+			style={{ left: touch?.clientX, top: touch?.clientY }}></div>
 	);
 };
 

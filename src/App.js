@@ -26,18 +26,14 @@ function App() {
 
 	useEffect(() => {
 		const chooseWinner = () => {
-			window.removeEventListener('touchmove', handleTouch);
-
 			const winner = touches[Math.floor(Math.random() * touches.length)];
 			const winnerId = touches.findIndex(
 				t => t.identifier === winner.identifier
 			);
-			console.log('winner: ', winner, winnerId, touches[winnerId]);
 			setWinnerId(winnerId);
 
 			setTimeout(() => {
 				setWinnerId(null);
-				window.addEventListener('touchmove', handleTouch);
 			}, 3000);
 		};
 
@@ -45,7 +41,6 @@ function App() {
 
 		if (touches.length > 1) {
 			clearTimeout(timer);
-			console.log('touches: ', touches);
 
 			timer = setTimeout(() => {
 				chooseWinner();
