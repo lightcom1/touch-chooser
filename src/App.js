@@ -4,7 +4,7 @@ import './app.scss';
 
 function App() {
 	const [touches, setTouches] = useState([]);
-	const [winner, setWinner] = useState(null);
+	const [winnerId, setWinnerId] = useState(null);
 
 	const handleTouch = e => {
 		setTouches([...e.touches]);
@@ -24,19 +24,14 @@ function App() {
 		};
 	}, []);
 
-	
-
 	useEffect(() => {
-
 		const chooseWinner = () => {
-			const numOfTouches = touches.length;
-			const winner = touches[Math.floor(Math.random() * numOfTouches)];
-			console.log('winner: ', winner);
-			setWinner(winner);
+			const winner = touches[Math.floor(Math.random() * touches.length)];
+			const winnerId = touches.findIndex(t => t.identifier === winner.identifier)
+			setWinnerId(winnerId);
 
 			setTimeout(() => {
-				console.log('timeout winner');
-				setWinner(null);
+				setWinnerId(null);
 			}, 2000);
 		};
 
@@ -44,11 +39,9 @@ function App() {
 
 		if (touches.length > 1) {
 			clearTimeout(timer);
-			console.log('clear timeout');
 
 			timer = setTimeout(() => {
 				chooseWinner();
-				console.log('touches', touches);
 			}, 3000);
 		}
 
@@ -60,13 +53,20 @@ function App() {
 
 	return (
 		<div className='app'>
-			<h1 className={`title${touches.length > 0 ? ' fade-out' : ''}`}>
+			<h1
+				className={`title${
+					touches.length > 0 || winnerId !== null ? ' fade-out' : ''
+				}`}>
 				Touch the screen
 			</h1>
 			{touches.length > 0 &&
 				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
 
-			{winner !== null && <Circle touch={winner} key={winner.identifier} />}
+			{winnerId !== null && (
+				<Circle
+					touch={touches[winnerId]}
+				/>
+			)}
 		</div>
 	);
 }
