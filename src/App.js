@@ -28,17 +28,19 @@ function App() {
 		const chooseWinner = () => {
 			const winner = touches[Math.floor(Math.random() * touches.length)];
 			const winnerId = touches.findIndex(t => t.identifier === winner.identifier)
+			console.log('winner: ', winner, winnerId);
 			setWinnerId(winnerId);
 
 			setTimeout(() => {
 				setWinnerId(null);
-			}, 2000);
+			}, 3000);
 		};
 
 		let timer = null;
 
 		if (touches.length > 1) {
 			clearTimeout(timer);
+			console.log('touches: ', touches, touches[winnerId]);
 
 			timer = setTimeout(() => {
 				chooseWinner();
