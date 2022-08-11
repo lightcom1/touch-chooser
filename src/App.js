@@ -30,7 +30,7 @@ function App() {
 			const winnerId = touches.findIndex(
 				t => t.identifier === winner.identifier
 			);
-			console.log('winner: ', winner, winnerId);
+			console.log('winner: ', winner, winnerId, touches[winnerId]);
 			setWinnerId(winnerId);
 
 			setTimeout(() => {
@@ -42,7 +42,7 @@ function App() {
 
 		if (touches.length > 1) {
 			clearTimeout(timer);
-			console.log('touches: ', touches, touches[winnerId]);
+			console.log('touches: ', touches);
 
 			timer = setTimeout(() => {
 				chooseWinner();
