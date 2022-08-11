@@ -60,10 +60,10 @@ function App() {
 				Touch the screen
 			</h1>
 			{touches.length > 0 &&
-				winner !== null &&
+				winner === null &&
 				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
 
-			{winner && <Circle touch={winner} key={winner.identifier} />}
+			{winner !== null && <Circle touch={winner} key={winner.identifier} />}
 		</div>
 	);
 }
