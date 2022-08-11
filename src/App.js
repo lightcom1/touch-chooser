@@ -8,19 +8,46 @@ function App() {
 	const handleTouch = e => {
 		setTouches([...e.touches]);
 	};
-	console.log('rerender app');
 
 	useEffect(() => {
 		window.addEventListener('touchstart', handleTouch);
+		window.addEventListener('touchend', handleTouch);
 		window.addEventListener('touchcancel', handleTouch);
 		window.addEventListener('touchmove', handleTouch);
 
 		return () => {
 			window.removeEventListener('touchstart', handleTouch);
+			window.removeEventListener('touchend', handleTouch);
 			window.removeEventListener('touchcancel', handleTouch);
 			window.removeEventListener('touchmove', handleTouch);
 		};
 	}, []);
+
+	useEffect(() => {
+		const chooseWinner = () => {
+			const numOfTouches = touches.length;
+			const winner = touches[Math.floor(Math.random() * numOfTouches)];
+			console.log('winner: ', winner);
+			setTouches(prevTouches =>
+				prevTouches.filter(t => t.identifier === winner)
+			);
+		};
+
+		let timer = null;
+
+		if (touches.length > 1) {
+			clearTimeout(timer);
+
+			timer = setTimeout(() => {
+				chooseWinner();
+			}, 2000);
+		}
+
+		return () => {
+			clearTimeout(timer);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [touches.length]);
 
 	return (
 		<div className='app'>

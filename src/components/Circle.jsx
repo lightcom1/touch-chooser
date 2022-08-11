@@ -1,7 +1,6 @@
 import './circle.scss';
 
 const Circle = ({ touch }) => {
-	console.log('rerender circle');
 
 	return (
 		<div
