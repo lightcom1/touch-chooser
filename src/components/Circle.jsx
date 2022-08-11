@@ -1,5 +1,4 @@
 import './circle.scss';
-import { memo } from 'react';
 
 const Circle = ({ touch }) => {
 	console.log('rerender circle');
@@ -11,4 +10,4 @@ const Circle = ({ touch }) => {
 	);
 };
 
-export default memo(Circle);
+export default Circle;
