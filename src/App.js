@@ -26,7 +26,7 @@ function App() {
 	useEffect(() => {
 		const chooseWinner = () => {
 			const numOfTouches = touches.length;
-			const winner = touches[Math.floor(Math.random() * numOfTouches)];
+			const winner = touches[Math.floor(Math.random() * numOfTouches)].identifier;
 			console.log('winner: ', winner);
 			setTouches(prevTouches =>
 				prevTouches.filter(t => t.identifier === winner)
