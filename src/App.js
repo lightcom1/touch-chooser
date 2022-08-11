@@ -24,18 +24,19 @@ function App() {
 		};
 	}, []);
 
+	const chooseWinner = () => {
+		const winner = touches[Math.floor(Math.random() * touches.length)];
+		console.log('touches', touches);
+		console.log('winner: ', winner);
+		setWinner(winner);
+
+		setTimeout(() => {
+			setWinner(null);
+		}, 3000);
+	};
+
 	useEffect(() => {
 		console.log('touches event');
-		const chooseWinner = () => {
-			const numOfTouches = touches.length;
-			const winner = touches[Math.floor(Math.random() * numOfTouches)];
-			console.log('winner: ', winner);
-			setWinner(winner);
-
-			setTimeout(() => {
-				setWinner(null);
-			}, 3000);
-		};
 
 		let timer = null;
 
@@ -51,7 +52,7 @@ function App() {
 			clearTimeout(timer);
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [touches]);
+	}, [touches.length]);
 
 	return (
 		<div className='app'>
