@@ -4,7 +4,7 @@ import './app.scss';
 
 function App() {
 	const [touches, setTouches] = useState([]);
-	const [winner, setWinner] = useState(null);
+	const [winner, setWinner] = useState(false);
 
 	const handleTouch = e => {
 		setTouches([...e.touches]);
@@ -28,11 +28,11 @@ function App() {
 		const chooseWinner = () => {
 			const winner = touches[Math.floor(Math.random() * touches.length)];
 			setTouches(prev => prev.filter(t => t.identifier === winner.identifier));
-
-			setWinner(winner);
+			console.log(touches);
+			setWinner(true);
 
 			setTimeout(() => {
-				setWinner(null);
+				setWinner(false);
 			}, 3000);
 		};
 
@@ -54,17 +54,14 @@ function App() {
 
 	return (
 		<div className='app'>
-			<h1
-				className={`title${
-					touches.length > 0 || winner !== null ? ' fade-out' : ''
-				}`}>
+			<h1 className={`title${touches.length > 0 || winner ? ' fade-out' : ''}`}>
 				Touch the screen
 			</h1>
 			{touches.length > 0 &&
-				winner === null &&
+				winner === false &&
 				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
 
-			{winner !== null && <Circle touch={winner} />}
+			{winner && <Circle touch={touches} />}
 		</div>
 	);
 }
