@@ -1,8 +1,6 @@
 import './circle.scss';
 
 const Circle = ({ touch }) => {
-	console.log('touch: ', touch);
-
 	return (
 		<div
 			className={`circle${touch ? '' : ' hide'}`}
