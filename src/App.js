@@ -24,18 +24,17 @@ function App() {
 		};
 	}, []);
 
-	const chooseWinner = () => {
-		const winner = touches[Math.floor(Math.random() * touches.length)];
-		console.log('winner: ', winner);
-		setWinner(winner);
-
-		setTimeout(() => {
-			setWinner(null);
-		}, 3000);
-	};
-
 	useEffect(() => {
-		console.log('touches event');
+		const chooseWinner = () => {
+			const winner = touches[Math.floor(Math.random() * touches.length)];
+			setTouches(prev => prev.filter(t => t.identifier === winner.identifier));
+
+			setWinner(winner);
+
+			setTimeout(() => {
+				setWinner(null);
+			}, 3000);
+		};
 
 		let timer = null;
 
@@ -44,7 +43,6 @@ function App() {
 
 			timer = setTimeout(() => {
 				chooseWinner();
-				console.log('touches', touches);
 			}, 3000);
 		}
 
