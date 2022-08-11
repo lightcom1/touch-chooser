@@ -4,6 +4,7 @@ import './app.scss';
 
 function App() {
 	const [touches, setTouches] = useState([]);
+	const [winner, setWinner] = useState(null);
 
 	const handleTouch = e => {
 		setTouches([...e.touches]);
@@ -24,20 +25,26 @@ function App() {
 	}, []);
 
 	
-	const chooseWinner = () => {
-		const winner = touches[Math.floor(Math.random() * touches.length)];
-		console.log('winner: ', winner);
-		
-	};
 
 	useEffect(() => {
-		console.log('touches event');
 
+		const chooseWinner = () => {
+			const numOfTouches = touches.length;
+			const winner = touches[Math.floor(Math.random() * numOfTouches)];
+			console.log('winner: ', winner);
+			setWinner(winner);
+
+			setTimeout(() => {
+				console.log('timeout winner');
+				setWinner(null);
+			}, 2000);
+		};
 
 		let timer = null;
 
 		if (touches.length > 1) {
 			clearTimeout(timer);
+			console.log('clear timeout');
 
 			timer = setTimeout(() => {
 				chooseWinner();
@@ -58,6 +65,8 @@ function App() {
 			</h1>
 			{touches.length > 0 &&
 				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
+
+			{winner !== null && <Circle touch={winner} key={winner.identifier} />}
 		</div>
 	);
 }
