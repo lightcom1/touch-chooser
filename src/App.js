@@ -25,6 +25,7 @@ function App() {
 	}, []);
 
 	useEffect(() => {
+		console.log('touches event');
 		const chooseWinner = () => {
 			const numOfTouches = touches.length;
 			const winner = touches[Math.floor(Math.random() * numOfTouches)];
@@ -32,38 +33,39 @@ function App() {
 			setWinner(winner);
 
 			setTimeout(() => {
-				console.log('timeout winner');
 				setWinner(null);
-			}, 2000);
+			}, 3000);
 		};
 
 		let timer = null;
 
 		if (touches.length > 1) {
 			clearTimeout(timer);
-			console.log('clear timeout');
 
 			timer = setTimeout(() => {
 				chooseWinner();
-			}, 2000);
+			}, 3000);
 		}
 
 		return () => {
 			clearTimeout(timer);
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [touches.length]);
+	}, [touches]);
 
 	return (
 		<div className='app'>
-			<h1 className={`title${touches.length > 0 ? ' fade-out' : ''}`}>
+			<h1
+				className={`title${
+					touches.length > 0 && winner === null ? ' fade-out' : ''
+				}`}>
 				Touch the screen
 			</h1>
 			{touches.length > 0 &&
 				winner === null &&
 				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
 
-			{winner !== null && <Circle touch={winner} key={winner.identifier} />}
+			{winner !== null && <Circle touch={winner} />}
 		</div>
 	);
 }
