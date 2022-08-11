@@ -13,7 +13,7 @@ function App() {
 		<div
 			className='app'
 			onTouchStart={hanldeTouch}
-			onTouchEnd={hanldeTouch}
+			// onTouchEnd={hanldeTouch}
 			onTouchMove={hanldeTouch}>
 			<h1 className={`title${touches.length > 0 ? ' fade-out' : ''}`}>
 				Touch the screen
