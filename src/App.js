@@ -27,7 +27,9 @@ function App() {
 	useEffect(() => {
 		const chooseWinner = () => {
 			const winner = touches[Math.floor(Math.random() * touches.length)];
-			const winnerId = touches.findIndex(t => t.identifier === winner.identifier)
+			const winnerId = touches.findIndex(
+				t => t.identifier === winner.identifier
+			);
 			console.log('winner: ', winner, winnerId);
 			setWinnerId(winnerId);
 
@@ -62,13 +64,10 @@ function App() {
 				Touch the screen
 			</h1>
 			{touches.length > 0 &&
+				winnerId === null &&
 				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
 
-			{winnerId !== null && (
-				<Circle
-					touch={touches[winnerId]}
-				/>
-			)}
+			{winnerId !== null && <Circle touch={touches[winnerId]} />}
 		</div>
 	);
 }
