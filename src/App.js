@@ -29,10 +29,9 @@ function App() {
 			const winner = touches[Math.floor(Math.random() * touches.length)];
 			setTouches(prev => prev.filter(t => t.identifier === winner.identifier));
 			console.log(winner);
-			setWinner(true);
 
 			setTimeout(() => {
-				setWinner(false);
+				setTouches([]);
 			}, 3000);
 		};
 
@@ -58,10 +57,7 @@ function App() {
 				Touch the screen
 			</h1>
 			{touches.length > 0 &&
-				winner === false &&
 				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
-
-			{winner && <Circle touch={touches[0]} />}
 		</div>
 	);
 }
