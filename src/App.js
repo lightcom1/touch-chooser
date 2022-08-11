@@ -8,7 +8,7 @@ function App() {
 	const hanldeTouch = e => {
 		setTouches([...e.touches]);
 	};
-
+	console.log('rerender app');
 	return (
 		<div
 			className='app'
