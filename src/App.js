@@ -26,7 +26,6 @@ function App() {
 
 	const chooseWinner = () => {
 		const winner = touches[Math.floor(Math.random() * touches.length)];
-		console.log('touches', touches);
 		console.log('winner: ', winner);
 		setWinner(winner);
 
@@ -45,6 +44,7 @@ function App() {
 
 			timer = setTimeout(() => {
 				chooseWinner();
+				console.log('touches', touches);
 			}, 3000);
 		}
 
@@ -58,7 +58,7 @@ function App() {
 		<div className='app'>
 			<h1
 				className={`title${
-					touches.length > 0 && winner === null ? ' fade-out' : ''
+					touches.length > 0 || winner !== null ? ' fade-out' : ''
 				}`}>
 				Touch the screen
 			</h1>
