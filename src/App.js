@@ -7,25 +7,34 @@ function App() {
 	const [winnerId, setWinnerId] = useState(null);
 
 	const handleTouch = e => {
+		console.log('eT: ', e.targetTouches);
+		console.log('eC: ', e.changedTouches);
+		console.log('eT: ', e.touches);
 		setTouches([...e.touches]);
+	};
+	const handleTouchEnd = e => {
+		console.log('e: ', e);
+		console.log('eT: ', e.targetTouches);
+		console.log('eC: ', e.changedTouches);
+		setTouches([...e.targetTouches]);
 	};
 
 	useEffect(() => {
 		window.addEventListener('touchstart', handleTouch);
-		window.addEventListener('touchend', handleTouch);
+		window.addEventListener('touchend', handleTouchEnd);
 		window.addEventListener('touchcancel', handleTouch);
 		window.addEventListener('touchmove', handleTouch);
 
 		if (winnerId !== null) {
 			window.removeEventListener('touchstart', handleTouch);
-			window.removeEventListener('touchend', handleTouch);
+			window.removeEventListener('touchend', handleTouchEnd);
 			window.removeEventListener('touchcancel', handleTouch);
 			window.removeEventListener('touchmove', handleTouch);
 		}
 
 		return () => {
 			window.removeEventListener('touchstart', handleTouch);
-			window.removeEventListener('touchend', handleTouch);
+			window.removeEventListener('touchend', handleTouchEnd);
 			window.removeEventListener('touchcancel', handleTouch);
 			window.removeEventListener('touchmove', handleTouch);
 		};
