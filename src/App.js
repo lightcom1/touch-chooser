@@ -10,28 +10,22 @@ function App() {
 		setTouches([...e.touches]);
 	};
 
-	const handleTouchEnd = e => {
-		console.log('eC: ', e.touches);
-
-		setTouches([...e.touches]);
-	};
-
 	useEffect(() => {
 		window.addEventListener('touchstart', handleTouch);
-		window.addEventListener('touchend', handleTouchEnd);
+		window.addEventListener('touchend', handleTouch);
 		window.addEventListener('touchcancel', handleTouch);
 		window.addEventListener('touchmove', handleTouch);
 
 		if (winnerId !== null) {
 			window.removeEventListener('touchstart', handleTouch);
-			window.removeEventListener('touchend', handleTouchEnd);
+			window.removeEventListener('touchend', handleTouch);
 			window.removeEventListener('touchcancel', handleTouch);
 			window.removeEventListener('touchmove', handleTouch);
 		}
 
 		return () => {
 			window.removeEventListener('touchstart', handleTouch);
-			window.removeEventListener('touchend', handleTouchEnd);
+			window.removeEventListener('touchend', handleTouch);
 			window.removeEventListener('touchcancel', handleTouch);
 			window.removeEventListener('touchmove', handleTouch);
 		};
@@ -47,6 +41,7 @@ function App() {
 
 			setTimeout(() => {
 				setWinnerId(null);
+				setTouches([]);
 			}, 3000);
 		};
 
@@ -77,9 +72,16 @@ function App() {
 			{winnerId !== null && <h1 className='title'>Winner: {winnerId + 1}</h1>}
 			{touches.length > 0 &&
 				winnerId === null &&
-				touches.map((touch, ind) => <Circle ind={ind} touch={touch} key={touch.identifier} winner={false}/>)}
+				touches.map((touch, ind) => (
+					<Circle
+						ind={ind}
+						touch={touch}
+						key={touch.identifier}
+						winner={false}
+					/>
+				))}
 
-			{winnerId !== null && <Circle touch={touches[winnerId]} winner={true}/>}
+			{winnerId !== null && <Circle touch={touches[winnerId]} winner={true} />}
 		</div>
 	);
 }
