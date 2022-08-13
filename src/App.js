@@ -9,9 +9,10 @@ function App() {
 	const handleTouch = e => {
 		setTouches([...e.touches]);
 	};
+
 	const handleTouchEnd = e => {
 		console.log('eC: ', e.changedTouches);
-		
+
 		if (touches.length > 1) {
 			setTouches([...e.changedTouches]);
 		} else {
@@ -38,6 +39,7 @@ function App() {
 			window.removeEventListener('touchcancel', handleTouch);
 			window.removeEventListener('touchmove', handleTouch);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [winnerId]);
 
 	useEffect(() => {
