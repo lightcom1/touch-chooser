@@ -12,6 +12,7 @@
 	text-align: center;
 	transition: transform 0.2s ease;
 	font-size: 37px;
+	user-select: none;
 
 	&.fade-out {
 		transform: translateY(-50%) scale(0);

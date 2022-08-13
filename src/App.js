@@ -15,6 +15,7 @@ function App() {
 		window.addEventListener('touchend', handleTouch);
 		window.addEventListener('touchcancel', handleTouch);
 		window.addEventListener('touchmove', handleTouch);
+		setTouches([]);
 
 		if (winnerId !== null) {
 			window.removeEventListener('touchstart', handleTouch);
@@ -68,7 +69,7 @@ function App() {
 				}`}>
 				Touch the screen
 			</h1>
-			{winnerId !== null && <h1 className='title'>Winner: {winnerId}</h1>}
+			{winnerId !== null && <h1 className='title'>Winner: {winnerId + 1}</h1>}
 			{touches.length > 0 &&
 				winnerId === null &&
 				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}

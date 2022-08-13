@@ -1,4 +1,5 @@
 .circle {
+	user-select: none;
 	position: absolute;
 	transform: translate(-50%, -50%) scale(0.6);
 	height: 85px;
@@ -22,6 +23,16 @@
 		width: 105px;
 		border: 4px solid #fff;
 		border-radius: 50%;
+	}
+
+	&-id {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		font-size: 35px;
+		transform: translate(-50%, -50%);
+		z-index: 2;
+		color: #000;
 	}
 }
 
