@@ -11,13 +11,9 @@ function App() {
 	};
 
 	const handleTouchEnd = e => {
-		console.log('eC: ', e.changedTouches);
+		console.log('eC: ', e.touches);
 
-		if (touches.length > 1) {
-			setTouches([...e.changedTouches]);
-		} else {
-			setTouches([...e.touches]);
-		}
+		setTouches([...e.touches]);
 	};
 
 	useEffect(() => {
