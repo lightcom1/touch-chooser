@@ -15,7 +15,6 @@ function App() {
 		window.addEventListener('touchend', handleTouch);
 		window.addEventListener('touchcancel', handleTouch);
 		window.addEventListener('touchmove', handleTouch);
-		setTouches([]);
 
 		if (winnerId !== null) {
 			window.removeEventListener('touchstart', handleTouch);

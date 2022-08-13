@@ -41,5 +41,4 @@ body {
 	overscroll-behavior: contain;
 	background: center / cover no-repeat url(./assets/blob-scene.svg);
 	color: #fff;
-	touch-action: none;
 }
