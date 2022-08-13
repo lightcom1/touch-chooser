@@ -7,16 +7,16 @@ function App() {
 	const [winnerId, setWinnerId] = useState(null);
 
 	const handleTouch = e => {
-		console.log('eT: ', e.targetTouches);
-		console.log('eC: ', e.changedTouches);
-		console.log('eT: ', e.touches);
 		setTouches([...e.touches]);
 	};
 	const handleTouchEnd = e => {
-		console.log('e: ', e);
-		console.log('eT: ', e.targetTouches);
 		console.log('eC: ', e.changedTouches);
-		setTouches([...e.targetTouches]);
+		
+		if (touches.length > 1) {
+			setTouches([...e.changedTouches]);
+		} else {
+			setTouches([...e.touches]);
+		}
 	};
 
 	useEffect(() => {
