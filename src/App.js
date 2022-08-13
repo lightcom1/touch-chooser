@@ -16,13 +16,20 @@ function App() {
 		window.addEventListener('touchcancel', handleTouch);
 		window.addEventListener('touchmove', handleTouch);
 
+		if (winnerId !== null) {
+			window.removeEventListener('touchstart', handleTouch);
+			window.removeEventListener('touchend', handleTouch);
+			window.removeEventListener('touchcancel', handleTouch);
+			window.removeEventListener('touchmove', handleTouch);
+		}
+
 		return () => {
 			window.removeEventListener('touchstart', handleTouch);
 			window.removeEventListener('touchend', handleTouch);
 			window.removeEventListener('touchcancel', handleTouch);
 			window.removeEventListener('touchmove', handleTouch);
 		};
-	}, []);
+	}, [winnerId]);
 
 	useEffect(() => {
 		const chooseWinner = () => {
@@ -61,6 +68,7 @@ function App() {
 				}`}>
 				Touch the screen
 			</h1>
+			{winnerId !== null && <h1 className='title'>Winner: {winnerId}</h1>}
 			{touches.length > 0 &&
 				winnerId === null &&
 				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
