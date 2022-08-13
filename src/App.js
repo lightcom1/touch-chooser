@@ -73,15 +73,12 @@ function App() {
 			{touches.length > 0 &&
 				winnerId === null &&
 				touches.map((touch, ind) => (
-					<Circle
-						ind={ind}
-						touch={touch}
-						key={touch.identifier}
-						winner={false}
-					/>
+					<Circle ind={ind} touch={touch} key={touch.identifier} />
 				))}
 
-			{winnerId !== null && <Circle touch={touches[winnerId]} winner={true} />}
+			{winnerId !== null && (
+				<Circle touch={touches[winnerId]} winnerId={winnerId} />
+			)}
 		</div>
 	);
 }
