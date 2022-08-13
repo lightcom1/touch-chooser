@@ -35,7 +35,6 @@ function App() {
 			window.removeEventListener('touchcancel', handleTouch);
 			window.removeEventListener('touchmove', handleTouch);
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [winnerId]);
 
 	useEffect(() => {
@@ -78,9 +77,9 @@ function App() {
 			{winnerId !== null && <h1 className='title'>Winner: {winnerId + 1}</h1>}
 			{touches.length > 0 &&
 				winnerId === null &&
-				touches.map(touch => <Circle touch={touch} key={touch.identifier} />)}
+				touches.map((touch, ind) => <Circle ind={ind} touch={touch} key={touch.identifier} winner={false}/>)}
 
-			{winnerId !== null && <Circle touch={touches[winnerId]} />}
+			{winnerId !== null && <Circle touch={touches[winnerId]} winner={true}/>}
 		</div>
 	);
 }
