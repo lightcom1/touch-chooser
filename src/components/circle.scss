@@ -8,11 +8,6 @@
 	background-color: #fff;
 	animation: popup 0.2s ease forwards;
 
-	&.hide {
-		animation: none;
-		transform: translate(-50%, -50%) scale(0);
-	}
-
 	&::after {
 		position: absolute;
 		content: '';
