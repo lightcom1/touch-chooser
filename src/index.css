@@ -34,10 +34,13 @@ body {
 	width: 100%;
 	overscroll-behavior-y: none;
 	position: fixed;
-  overflow: hidden;
+	overflow: hidden;
+	touch-action: none;
+	-ms-touch-action: none;
+	-webkit-text-size-adjust: none;
 }
 
 body {
-	background: center / cover no-repeat url(./assets/blob-scene.svg);
+	background: url(./assets/blurry-gradient.png) center / cover no-repeat;
 	color: #fff;
 }

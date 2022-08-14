@@ -69,7 +69,7 @@ function App() {
 				}`}>
 				Touch the screen
 			</h1>
-			{winnerId !== null && <h1 className='title'>Winner: {winnerId + 1}</h1>}
+			<h1 className={`title title--winner${winnerId !== null ? ' fade-in' : ''}`}>Winner: {winnerId + 1}</h1>
 			{touches.length > 0 &&
 				winnerId === null &&
 				touches.map((touch, ind) => (

@@ -6,15 +6,23 @@
 }
 
 .title {
-	position: relative;
+	position: absolute;
 	top: 50%;
-	transform: translateY(-50%);
-	text-align: center;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	transition: transform 0.2s ease;
 	font-size: 37px;
 	user-select: none;
-
+	white-space: nowrap;
+	
 	&.fade-out {
-		transform: translateY(-50%) scale(0);
+		transform: translate(-50%, -50%) scale(0);
+	}
+
+	&--winner {
+		transform: translate(-50%, -50%) scale(0);
+	}
+	&.fade-in {
+		transform: translate(-50%, -50%) scale(1);
 	}
 }
