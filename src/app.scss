@@ -4,6 +4,15 @@
 	width: 100%;
 	overflow: hidden;
 }
+.app {
+	background-image: url(./assets/blurry-gradient.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	-o-background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+}
 
 .title {
 	position: absolute;
@@ -14,7 +23,7 @@
 	font-size: 37px;
 	user-select: none;
 	white-space: nowrap;
-	
+
 	&.fade-out {
 		transform: translate(-50%, -50%) scale(0);
 	}
