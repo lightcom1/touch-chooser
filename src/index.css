@@ -45,5 +45,8 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	-o-background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
 	color: #fff;
 }
