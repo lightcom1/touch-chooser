@@ -19,20 +19,20 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	transform-origin: center;
+	transform-origin: center center;
 	transition: transform 0.2s ease;
 	font-size: 37px;
 	user-select: none;
 	white-space: nowrap;
 
 	&.fade-out {
-		-webkit-transform: translate(-50%, -50%) scale(0, 0);
+		transform: translate(-50%, -50%) scale(0);
 	}
 
 	&--winner {
-		-webkit-transform: translate(-50%, -50%) scale(0, 0);
+		transform: translate(-50%, -50%) scale(0);
 	}
 	&.fade-in {
-		-webkit-transform: translate(-50%, -50%) scale(1, 1);
+		transform: translate(-50%, -50%) scale(1);
 	}
 }
