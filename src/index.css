@@ -41,6 +41,9 @@ body {
 }
 
 body {
-	background: url(./assets/blurry-gradient.png) center / cover no-repeat;
+	background-image: url(./assets/blurry-gradient.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 	color: #fff;
 }
