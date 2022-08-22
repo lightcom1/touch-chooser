@@ -26,16 +26,13 @@
 	white-space: nowrap;
 
 	&.fade-out {
-		transform: translate(-50%, -50%) scale(0);
 		-webkit-transform: translate(-50%, -50%) scale(0, 0);
 	}
 
 	&--winner {
-		transform: translate(-50%, -50%) scale(0);
 		-webkit-transform: translate(-50%, -50%) scale(0, 0);
 	}
 	&.fade-in {
-		transform: translate(-50%, -50%) scale(1);
 		-webkit-transform: translate(-50%, -50%) scale(1, 1);
 	}
 }
